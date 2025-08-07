@@ -7,6 +7,13 @@ import { CategoryFilters } from '@/components/CategoryFilter';
 import { LocationMap } from '@/components/LocationMap';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Sparkles, 
+  MapPin, 
+  TrendingUp, 
+  Users, 
+  Heart
+} from "lucide-react";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -69,27 +76,44 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20" />
-        <div className="relative z-10 container mx-auto px-4 py-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-8"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
-              Vibe Navigator
-            </h1>
-            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-              Discover the perfect spots with AI-powered vibe analysis from real reviews ✨
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 gradient-hero opacity-10" />
+        <div className="relative container mx-auto px-4 py-16">
+          <div className="text-center max-w-4xl mx-auto space-y-6">
+            <div className="flex items-center justify-center gap-3">
+              <Sparkles className="h-10 w-10 text-primary animate-pulse" />
+              <h1 className="text-4xl md:text-6xl font-bold text-shimmer">
+                Vibe Navigator
+              </h1>
+              <Sparkles className="h-10 w-10 text-primary animate-pulse" />
+            </div>
+            
+            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+              Discover your city's perfect spots through{" "}
+              <span className="text-primary font-semibold">AI-powered vibe analysis</span>{" "}
+              of real user reviews
             </p>
-          </motion.div>
-
-          <SearchHeader onSearch={handleSearch} loading={loading} />
+            
+            <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <MapPin className="h-4 w-4 text-primary" />
+                <span>Location-based</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Users className="h-4 w-4 text-primary" />
+                <span>Real reviews</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Heart className="h-4 w-4 text-primary" />
+                <span>Vibe-matched</span>
+              </div>
+            </div>
+            <SearchHeader onSearch={handleSearch} loading={loading} />
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
