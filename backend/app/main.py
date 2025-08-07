@@ -3,7 +3,6 @@ from app.rag_engine import retrieve, build_prompt, generate_response
 
 app = FastAPI()
 
-print("Ready to serve recommendations!")
 @app.get("/recommend")
 def recommend(q: str = Query(..., description="e.g., romantic cozy cafes in Hyderabad")):
     results = retrieve(q)
